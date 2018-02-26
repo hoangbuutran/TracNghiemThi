@@ -1,0 +1,84 @@
+﻿@model Model.EF.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Người Dùng</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LOAINGUOIDUNG.TENLOAINGUOIDUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAINGUOIDUNG.TENLOAINGUOIDUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENNGUOIDUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENNGUOIDUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENDANGNHAP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENDANGNHAP)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.MATKHAU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATKHAU)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DOTINCAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOTINCAY)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <button class="button">
+                @Html.ActionLink("Back to List", "Index")
+            </button>
+
+        </div>
+    }
+</div>

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Model.EF.CAPTHI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Quản Lý Cấp Thi</h2>
+<hr />
+<p>
+    <button class="button">
+        @Html.ActionLink("Thêm mới cấp thi", "Create")
+    </button>
+
+</p>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Danh Sách Cấp Thi
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TENCAPTHI)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TRANGTHAI)
+                                </th>
+                                <th>Tùy Chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TENCAPTHI)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                                    </td>
+                                    <td>
+                                        <button class="button">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.IDCAPTHI })
+                                        </button>
+                                        |
+                                        <button class="button">
+                                            @Html.ActionLink("Details", "Details", new { id = item.IDCAPTHI })
+                                        </button>
+                                        |
+                                        <button class="button">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.IDCAPTHI })
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

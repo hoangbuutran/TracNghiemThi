@@ -1,0 +1,46 @@
+﻿@using Microsoft.SqlServer.Server
+@model IEnumerable<Model.EF.TINTUC>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+}
+
+
+
+
+
+@foreach (var item in Model)
+{
+    <div class="clearfix tlwrap">
+        <ul class="list-topic-cate timeline">
+
+            <li class="item-news-cate clearfix  related-news" data-locked="false" data-posid="" data-newsid="2017110611455069" data-slottype="relatednews">
+                <h3>
+                    <a href="/TinTucGiaoDuc/xemtin/@item.IDTINTUC" class="title-new-cate show-popup">@item.TIEUDE</a>
+                </h3>
+                <div class="col-md-4">
+                    <img src="@item.ANHBIA"/>
+            </div>
+            <div class="col-md-8">
+                <div class="info-new-cate elp-list">
+                    <p>
+                        <span class="time-new kcnwn-meta date-time" title="@item.THOIGIAN">@item.THOIGIAN </span>
+                        <hr />
+                    </p>
+                    <span class="sapo-new">@item.TOMTAT</span>
+                </div>
+            </div>
+        </li>
+        <li>
+            <hr />
+        </li>
+
+        <li class="item-news-cate clearfix xxx tlboxZone toptitle">
+            <div data-check-position="soha_cate_boxchild_start"></div>
+            <div class="left">
+            </div>
+        </li>
+    </ul>
+</div>
+}

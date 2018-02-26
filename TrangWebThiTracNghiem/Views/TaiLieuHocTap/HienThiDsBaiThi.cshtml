@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Model.EF.TAILIEU>
+
+@{
+    ViewBag.Title = "HienThiDsBaiThi";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+}
+
+<h2>Danh sách tài liệu môn</h2>
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.TENBAI)
+        </th>
+
+        <th>Xem Bài</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TENBAI)
+            </td>
+
+            <td>
+                <button>
+                    @Html.ActionLink("Xem bài", "XemChiTiet", new { id = item.IDTAILIEU })
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,10 @@
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\bin\Debug\Model.dll.config
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\bin\Debug\Model.dll
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\bin\Debug\Model.pdb
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\bin\Debug\EntityFramework.dll
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\bin\Debug\EntityFramework.xml
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\obj\Debug\Model.dll
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\obj\Debug\Model.pdb
+E:\TRANHOANGBUU\ĐỒ ÁN THI THỬ TRẮC NGHIỆM ONLINE\DEMO\TrangWebThiTracNghiem\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

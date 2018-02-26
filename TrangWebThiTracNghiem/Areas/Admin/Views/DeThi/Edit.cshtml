@@ -1,0 +1,183 @@
+﻿@using TrangWebThiTracNghiem.Common
+@model Model.EF.DETHI
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var session = (NguoiDungLogin)Session[CommonConstant.USER_SESSION];
+
+    var dscauhoi = (List<Model.EF.CT_DETHI_CAUHOI>)ViewBag.dsCauHoi;
+    int j = 1;
+}
+<br />
+<h2>Sửa đề thi</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Đề thi @Model.IDDETHI</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IDDETHI)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TENDETHI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.TENDETHI, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENDETHI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDMUCDO, "IDMUCDO", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDMUCDO", ViewBag.MucDoID as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDMUCDO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDMON, "IDMON", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDMON", ViewBag.MonThiID as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDMON, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDTHOIGIAN, "IDTHOIGIAN", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDTHOIGIAN", ViewBag.ThoiGianID as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDTHOIGIAN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDSOCAU, "IDSOCAU", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDSOCAU", ViewBag.SoCauID as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDSOCAU, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Số câu đã có trong đề", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.ViewBag.soCauDaCo
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDNGUOIDUNG, "IDNGUOIDUNG", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDNGUOIDUNG", new List<SelectListItem> { new SelectListItem { Text = @session.tendangnhap, Value = @session.idnguoidung.ToString() } }, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDNGUOIDUNG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NGAYTAODE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.NGAYTAODE, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NGAYTAODE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DOTINCAY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.DOTINCAY, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DOTINCAY, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TRANGTHAI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TRANGTHAI)
+                    @Html.ValidationMessageFor(model => model.TRANGTHAI, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div class="panel-heading">
+    @if (@dscauhoi.Count <= 0)
+    {
+        <button class="button">
+            @Html.ActionLink("Thêm câu hỏi cho đề", "ThemCauHoi", new { id = Model.IDDETHI })
+        </button>
+    }
+    else
+    {
+        <button class="button">
+            @Html.ActionLink("Thêm câu hỏi cho đề", "ThemCauHoiDaCo", new { id = Model.IDMON, idDeThi = Model.IDDETHI })
+        </button>
+    }
+</div>
+
+<div class="form-group">
+    @if (@dscauhoi.Count > 0)
+    {
+        foreach (var item in @dscauhoi)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Câu @j: @Html.Raw(@item.CAUHOI.NOIDUNGCAUHOI)
+                        </div>
+                        <!-- .panel-heading -->
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                A. @item.CAUHOI.DAPAN_A
+                            </li>
+                            <li class="list-group-item">
+                                B. @item.CAUHOI.DAPAN_B
+                            </li>
+                            <li class="list-group-item">
+                                C. @item.CAUHOI.DAPAN_C
+                            </li>
+                            <li class="list-group-item">
+                                D. @item.CAUHOI.DAPAN_D
+                            </li>
+                            <li class="list-group-item">
+                                <button class="button">
+                                    @Html.ActionLink("Xóa câu hỏi", "XoaCauHoiTrongDe", new { id = item.ID })
+                                </button>
+                                <button class="button">
+                                    <a href="/Admin/DeThi/DetailsCauHoi/@item.IDCAUHOI">Chi tiết câu hỏi</a>
+                                </button>
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            j++;
+        }
+    }
+    else
+    {
+        <div>
+            <strong> Đề thi chưa có câu hỏi nào.</strong>
+        </div>
+    }
+
+</div>
+
+<div>
+    <button class="button">
+        @Html.ActionLink("Trở về quản lý đề thi", "Index")
+    </button>
+</div>

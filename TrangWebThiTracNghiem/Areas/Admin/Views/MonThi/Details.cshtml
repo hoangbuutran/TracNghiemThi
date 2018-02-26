@@ -1,0 +1,48 @@
+﻿@model Model.EF.MONTHI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Chi tiết môn thi</h2>
+
+<div>
+    <h4>Môn Thi: @Model.TENMON</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CAPTHI.TENCAPTHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAPTHI.TENCAPTHI)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENMON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENMON)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<p>
+    <button class="button">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IDMON })
+    </button>
+    |
+    <button class="button">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+</p>

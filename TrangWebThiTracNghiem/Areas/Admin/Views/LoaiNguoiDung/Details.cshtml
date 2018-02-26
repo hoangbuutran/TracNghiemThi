@@ -1,0 +1,42 @@
+﻿@model Model.EF.LOAINGUOIDUNG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết loại người dùng</h2>
+<hr/>
+<div>
+    <h4>Loại người dùng: @Model.TENLOAINGUOIDUNG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TENLOAINGUOIDUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENLOAINGUOIDUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<p>
+    <button class="button">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IDLOAINGUOIDUNG })
+    </button>
+    |
+    <button class="button">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+
+
+</p>

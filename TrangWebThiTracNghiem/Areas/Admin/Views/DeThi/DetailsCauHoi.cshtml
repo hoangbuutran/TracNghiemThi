@@ -1,0 +1,65 @@
+﻿@model Model.EF.CAUHOI
+
+@{
+    ViewBag.Title = "DetailsCauHoi";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết câu hỏi</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NOIDUNGCAUHOI)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.NOIDUNGCAUHOI)*@
+            @Html.Raw(Model.NOIDUNGCAUHOI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_A)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_A)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_B)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_C)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_C)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_D)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_DUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_DUNG)
+        </dd>
+
+    </dl>
+</div>
+

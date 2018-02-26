@@ -1,0 +1,42 @@
+﻿@using Model.EF
+@model Model.EF.CT_CHUYENNGANH_MON
+
+@{
+    ViewBag.Title = "ThemMonChuyenNganh";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var monthi = (MONTHI) ViewBag.monthi;
+}
+<br/>
+<h2>Thêm Chuyên Ngành Cho Môn</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Môn thi: @monthi.TENMON</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDMON, "IDMON", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDMON", new List<SelectListItem>{ new SelectListItem{Text = monthi.TENMON, Value = monthi.IDMON.ToString()}}, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDMON, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDCN_DH, "IDCN_DH", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDCN_DH", @ViewBag.chuyennganh as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDCN_DH, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-10">
+                <input type="submit" value="Thêm Chuyên Ngành Cho Môn" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

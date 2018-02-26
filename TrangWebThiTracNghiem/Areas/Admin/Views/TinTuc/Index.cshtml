@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Model.EF.TINTUC>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Quản Lý Tin Tức</h2>
+<hr />
+<p>
+    <button class="Button">
+        @Html.ActionLink("Tạo mới tin tức", "Create")
+    </button>
+</p>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Danh sách Câu Hỏi</strong>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover col-md-6">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TIEUDE)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.THOIGIAN)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TRANGTHAI)
+                                </th>
+
+                                <th>Tùy Chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td id="tieudeadmin">
+                                        @Html.DisplayFor(modelItem => item.TIEUDE)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.THOIGIAN)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                                    </td>
+                                    <td>
+                                        <button class="Button">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.IDTINTUC })
+                                        </button>
+                                        -
+                                        <button class="Button">
+                                            @Html.ActionLink("Details", "Details", new { id = item.IDTINTUC })
+                                        </button>
+                                        -
+                                        <button class="Button">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.IDTINTUC })
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+</div>

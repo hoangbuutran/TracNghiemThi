@@ -1,0 +1,80 @@
+﻿@using Model.EF
+@model Model.EF.BAILAM
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+    var listcauhoi = (List<CT_DETHI_CAUHOI>)ViewBag.dscauhoi;
+}
+
+<h2>Chi tiết bài làm</h2>
+
+<div>
+    <h4>Điểm bài làm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DETHI.TENDETHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DETHI.TENDETHI)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.NGUOIDUNG.TENNGUOIDUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOIDUNG.TENNGUOIDUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAY)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DIEM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIEM)
+        </dd>
+        <hr />
+    </dl>
+</div>
+@foreach (var item in listcauhoi)
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    @Html.Raw(@item.CAUHOI.NOIDUNGCAUHOI)
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" id="1">
+                        A. @item.CAUHOI.DAPAN_A
+                    </li>
+                    <li class="list-group-item" id="2">
+                        B. @item.CAUHOI.DAPAN_B
+                    </li>
+                    <li class="list-group-item" id="3">
+                        C. @item.CAUHOI.DAPAN_C
+                    </li>
+                    <li class="list-group-item" id="4">
+                        D. @item.CAUHOI.DAPAN_D
+                    </li>
+                    <li class="list-group-item">
+                        @Html.ActionLink("Chi tiết câu hỏi", "ChiTietCauHoidathi", new { id = item.IDCAUHOI }, null)
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,79 @@
+﻿@using Model.EF
+@model IList<CT_BAIlAM_CAUHOI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutThi.cshtml";
+    var cauHoiNho = (IList<Model.EF.CT_DETHI_CAUHOI>)ViewBag.cauhoi;
+
+    var thongtin = (BAILAM)ViewBag.thongtin;
+
+    int i = 0;
+}
+<div id="viewbaithilucthi">
+    @using (Html.BeginForm("Index", "Thi", FormMethod.Post, new { id = "frm" }))
+    {
+        @Html.AntiForgeryToken()
+        foreach (var item in cauHoiNho)
+        {
+            @Html.HiddenFor(model => model[i].IDBAILAM, new { @Value = @ViewBag.idBaiLam, @class = "form-control" })
+            @Html.HiddenFor(model => model[i].IDCAUHOI, new { @Value = @cauHoiNho[i].IDCAUHOI, @class = "form-control" })
+            <div>Câu hỏi: @Html.Raw(cauHoiNho[i].CAUHOI.NOIDUNGCAUHOI)</div>
+            <br />
+            <div>
+                @Html.RadioButtonFor(model => model[i].TRALOI, 1)
+                A. @Html.Label(cauHoiNho[i].CAUHOI.DAPAN_A)
+            </div>
+
+            <div>
+                @Html.RadioButtonFor(model => model[i].TRALOI, 2)
+                B. @Html.Label(cauHoiNho[i].CAUHOI.DAPAN_B)
+            </div>
+
+            <div>
+                @Html.RadioButtonFor(model => model[i].TRALOI, 3)
+                C. @Html.Label(cauHoiNho[i].CAUHOI.DAPAN_C)
+            </div>
+
+            <div>
+                @Html.RadioButtonFor(model => model[i].TRALOI, 4)
+                D. @Html.Label(cauHoiNho[i].CAUHOI.DAPAN_D)
+            </div>
+
+            <br />
+            <hr />
+            i++;
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    }
+</div>
+
+
+@section thongtin{
+    <br/>
+    <strong><p id="timer">--Thời Gian--</p></strong>
+    <div class="clear"></div>
+    <hr/>
+    <br/>
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Người thi:@thongtin.NGUOIDUNG.TENNGUOIDUNG</th>
+            </tr>
+            <tr>
+                <th>Đề thi:@thongtin.DETHI.TENDETHI</th>
+            </tr>
+            <tr>
+                <th>Số câu:@thongtin.DETHI.SOCAU.SOCAU1</th>
+            </tr>
+            <tr>
+                <th>Thời gian thi:<input type="number" id="myNumber" value=@thongtin.DETHI.THOIGIAN.THOIGIAN1.Value.Minutes></th>
+            </tr>
+        </thead>
+    </table>
+
+}

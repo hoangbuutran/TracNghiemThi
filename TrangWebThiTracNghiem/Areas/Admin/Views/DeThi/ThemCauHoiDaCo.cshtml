@@ -1,0 +1,45 @@
+﻿@model IList<Model.EF.CT_DETHI_CAUHOI>
+
+@{
+    ViewBag.Title = "ThemCauHoiDaCo";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    int i = 0;
+    var cauHoiNho = (IList<Model.EF.CAUHOI>)ViewBag.cauhoi;
+}
+<br />
+<h2>Thêm Câu Hỏi</h2>
+<button class="button">
+    @Html.ActionLink("Tạo mới câu hỏi cho đề", "ThemCauHoi", new { id = @ViewBag.IDdethi })
+</button>
+<hr/>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Chọn câu hỏi đã có trong kho đề</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @foreach (var item in cauHoiNho)
+        {
+            <br />
+            <div>
+                @Html.CheckBoxFor(model => model[i].ISSELECTED) Chọn Vào Đề<br/>
+                @Html.HiddenFor(model => model[i].IDCAUHOI, new { @Value = item.IDCAUHOI, @class = "form-control" })
+                @Html.HiddenFor(model => model[i].IDDETHI, new { @Value = (int) @ViewBag.IDdethi, @class = "form-control" })
+                Nội dung: @Html.Label(cauHoiNho[i].NOIDUNGCAUHOI)<br />
+                A: @Html.Label(cauHoiNho[i].DAPAN_A)<br />
+                B: @Html.Label(cauHoiNho[i].DAPAN_B)<br />
+                C: @Html.Label(cauHoiNho[i].DAPAN_C)<br />
+                D: @Html.Label(cauHoiNho[i].DAPAN_D)
+            </div>
+            <hr />
+            i++;
+        }
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

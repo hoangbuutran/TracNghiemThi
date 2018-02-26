@@ -1,0 +1,113 @@
+﻿@using TrangWebThiTracNghiem.Common
+@model Model.EF.DETHI
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var session = (NguoiDungLogin)Session[CommonConstant.USER_SESSION];
+}
+<br />
+@using (Html.BeginForm("Create", "DeThi", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h2>Tạo Mới Đề Thi</h2>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TENDETHI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.TENDETHI, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TENDETHI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDCAPTHI, "IDCAPTHI", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDCAPTHI", @ViewBag.CapThiID as SelectList, "Chọn Cấp Thi", htmlAttributes: new { @class = "form-control", @id = "CapThiID" })
+                @Html.ValidationMessageFor(model => model.IDCAPTHI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDMUCDO, "IDMUCDO", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDMUCDO", @ViewBag.MucDoID as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDMUCDO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDMON, "IDMON", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDMON", @ViewBag.MonThiID as SelectList, htmlAttributes: new { @class = "form-control", @id = "MonThiID" })
+                @Html.ValidationMessageFor(model => model.IDMON, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDTHOIGIAN, "IDTHOIGIAN", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDTHOIGIAN", @ViewBag.ThoiGianID as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDTHOIGIAN, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDSOCAU, "IDSOCAU", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDSOCAU", @ViewBag.SoCauID as SelectList, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDSOCAU, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDNGUOIDUNG, "IDNGUOIDUNG", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("IDNGUOIDUNG", new List<SelectListItem> { new SelectListItem { Text = @session.tendangnhap, Value = @session.idnguoidung.ToString() } }, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IDNGUOIDUNG, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NGAYTAODE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.NGAYTAODE, new { htmlAttributes = new { @Value = DateTime.Now, @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NGAYTAODE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DOTINCAY, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.DOTINCAY, new { htmlAttributes = new { @Value = "100", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DOTINCAY, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TRANGTHAI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.TRANGTHAI)
+                    @Html.ValidationMessageFor(model => model.TRANGTHAI, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<div>
+    <button class="button">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+</div>
+
+

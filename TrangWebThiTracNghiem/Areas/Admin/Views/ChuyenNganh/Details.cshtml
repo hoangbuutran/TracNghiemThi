@@ -1,0 +1,40 @@
+﻿@model Model.EF.CHUYENNGANH_DH
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Chi Tiết Chuyên Ngành</h2>
+
+<div>
+    <h4>Chuyên Ngành</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CAPTHI.TENCAPTHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAPTHI.TENCAPTHI)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENCN_DH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENCN_DH)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<p>
+    <button class="button">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IDCN_DH })
+    </button>
+    |
+    <button class="button">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+</p>

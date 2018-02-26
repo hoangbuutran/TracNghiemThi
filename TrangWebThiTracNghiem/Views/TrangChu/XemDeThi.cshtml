@@ -1,0 +1,81 @@
+﻿@model Model.EF.DETHI
+
+@{
+    ViewBag.Title = "XemDeThi";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+    var dscauhoi = (List<Model.EF.CT_DETHI_CAUHOI>)ViewBag.dsCauHoi;
+    int i = dscauhoi.Count();
+}
+
+
+
+<div>
+    @if (i == 0)
+    {
+        <div> <h2>KHÔNG CÓ CÂU HỎI NÀO TRONG ĐỀ</h2></div>
+    }
+    else
+    {
+        <h2>Đề thi trắc nghiệm @Model.TENDETHI</h2>
+        <hr />
+        <dl class="dl-horizontal">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>
+                                Số câu hỏi: @Html.DisplayFor(model => model.SOCAU.SOCAU1),
+                                Thời gian: @Html.DisplayFor(model => model.THOIGIAN.THOIGIAN1)
+                            </h3>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <h4><a href="/BaiLam/Create/@Model.IDDETHI" class="button">Tạo Bài Thi</a></h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </dl>
+
+
+        <div class="form-group">
+            @if (i == 0)
+            {
+                <div> <h2>KHÔNG CÓ CÂU HỎI NÀO TRONG ĐỀ</h2></div>
+            }
+            else
+            {
+                int j = 1;
+                foreach (var item in dscauhoi)
+                {
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Câu @j: @Html.Raw(item.CAUHOI.NOIDUNGCAUHOI)
+                                </div>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        A. @item.CAUHOI.DAPAN_A
+                                    </li>
+                                    <li class="list-group-item">
+                                        B. @item.CAUHOI.DAPAN_B
+                                    </li>
+                                    <li class="list-group-item">
+                                        C. @item.CAUHOI.DAPAN_C
+                                    </li>
+                                    <li class="list-group-item">
+                                        D. @item.CAUHOI.DAPAN_D
+                                    </li>
+                                    <div class="clear"></div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    j++;
+                }
+            }
+        </div>
+    }
+</div>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Model.EF.LOAINGUOIDUNG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Quản lý loại người dùng</h2>
+
+<p>
+    <button class="button">
+        @Html.ActionLink("Tạo mới loại người dùng", "Create")
+    </button>
+
+</p>
+
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Danh sách loại người dùng
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TENLOAINGUOIDUNG)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TRANGTHAI)
+                                </th>
+                                <th>Tùy Chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TENLOAINGUOIDUNG)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TRANGTHAI)
+                                    </td>
+                                    <td>
+                                        <button class="button">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.IDLOAINGUOIDUNG }, null)
+                                        </button>
+                                        |
+                                        <button class="button">
+                                            @Html.ActionLink("Details", "Details", new { id = item.IDLOAINGUOIDUNG })
+                                        </button>
+                                        |
+                                        <button class="button">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.IDLOAINGUOIDUNG })
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+
+</div>
+

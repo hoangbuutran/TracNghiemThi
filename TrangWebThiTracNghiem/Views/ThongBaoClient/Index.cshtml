@@ -1,0 +1,28 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+    var thongbao = (IOrderedEnumerable<Model.EF.THONGBAO>)ViewBag.ListThongBao;
+}
+
+<h2>Thông báo của trang web</h2>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Thông báo
+            </div>            
+            <div class="panel-body">
+                @foreach (var item in thongbao)
+                {
+                    <div class="alert alert-success">
+                        @item.NOIDUNGTHONGBAO. Ngày: @item.NGAYDANG
+                    </div>
+                } 
+            </div>
+        </div>
+    </div>
+                
+</div>

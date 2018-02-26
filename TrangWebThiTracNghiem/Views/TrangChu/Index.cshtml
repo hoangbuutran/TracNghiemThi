@@ -1,0 +1,201 @@
+﻿@using Microsoft.Ajax.Utilities
+@using Model.EF
+@model Model.EF.DETHI
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var menuChinh = (List<Model.EF.CAPTHI>)ViewBag.MenuChinh;
+    var menuCon = (List<Model.EF.MONTHI>)ViewBag.MenuCon;
+    var thongbao = (IOrderedEnumerable<Model.EF.THONGBAO>)ViewBag.ListThongBao;
+    var socau = (List<Model.EF.SOCAU>)ViewBag.socau;
+    var thoigian = (List<Model.EF.THOIGIAN>)ViewBag.thoigian;
+    var dethi = (List<Model.EF.DETHI>)ViewBag.dethi;
+    var tintuc = (IOrderedEnumerable<TINTUC>)ViewBag.tintuc;
+    var tintuctop = (TINTUC)ViewBag.tintuctop;
+    int i1 = 0;
+    int i2 = 1;
+    int sotin = 1;
+}
+
+@section MenuAndThongBao{
+    <div class="header_slide">
+        <div class="header_bottom_left">
+            @RenderPage("~/Views/Shared/_MenuLeft.cshtml")
+        </div>
+        <div class="header_bottom_right">
+            <div class="row" id="rowmain">
+                <div class="col-md-6">
+                    <div id="post">
+                        <div class="row">
+                            <div class="panel panel-default" id="thongbao">
+                                <div class="panel-heading">
+                                    THÔNG BÁO
+                                </div>
+                                <!-- /.panel-heading -->
+                                <div class="panel-body">
+                                    @foreach (var thongbaolist in thongbao)
+                                    {
+                                        i1 = (@i1 + 1);
+                                        if (i1 <= 3)
+                                        {
+                                            <div class="alert alert-success">
+                                                <strong>@thongbaolist.TENTHONGBAO Ngày: @thongbaolist.NGAYDANG</strong><br />
+                                                @thongbaolist.NOIDUNGTHONGBAO
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <!-- .panel-body -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="sidebar">
+                        <h2 style="margin-bottom: 8px; color: #666; font-size: 20px">
+                            <strong>Tạo đề thi trắc nghiệm</strong>
+                        </h2>
+                        <p style="margin-bottom: 8px">
+                            Mọi người đều có thể tạo đề thi
+                        </p>
+                        @using (Html.BeginForm("Create", "DeThi", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                <div>
+                                    @Html.LabelFor(model => model.IDMON, "IDMON", htmlAttributes: new { })
+                                    @Html.DropDownList("IDMON", @ViewBag.MonThiID as SelectList, htmlAttributes: new { })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(model => model.IDMUCDO, "IDMUCDO", htmlAttributes: new { })
+                                    @Html.DropDownList("IDMUCDO", @ViewBag.MucDoID as SelectList, htmlAttributes: new { })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(model => model.IDTHOIGIAN, "IDTHOIGIAN", htmlAttributes: new { })
+                                    @Html.DropDownList("IDTHOIGIAN", @ViewBag.ThoiGianID as SelectList, htmlAttributes: new { })
+                                </div>
+                                <div>
+                                    @Html.LabelFor(model => model.IDSOCAU, "IDSOCAU", htmlAttributes: new { })
+                                    @Html.DropDownList("IDSOCAU", @ViewBag.SoCauID as SelectList, htmlAttributes: new { })
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div style="margin-top: 20px; padding-top: 20px; border-top: 1px dashed #E2E2E2; font-size: 12px;">
+                            <ul style="margin-left: 20px">
+                                <li><a href="">Hướng dẫn làm bài thi trắc nghiệm</a></li>
+                                <li><a href="">Hướng dẫn chi tiết đăng ký</a>.</li>
+                                <li><a href="">Danh sách tất cả các đề thi theo mẫu</a></li>
+                                <li><a href="">Quyền lợi của thành viên</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+}
+
+<div class="content">
+    @*tin tức*@
+    <div class="content_top">
+        <div class="heading">
+            <h3>TIN TỨC</h3>
+        </div>
+        <div class="see">
+            <p>
+                <a href="#">Xem thêm tin tức</a>
+            </p>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+
+
+        <div class="col-md-6">
+            <div style="width:100%">
+
+                <a href="" title="@tintuctop.TIEUDE" class="home_img_b">
+                    <img id="anhbiatintop" src="@tintuctop.ANHBIA" />
+                </a>
+                <br />
+                <h2><a href="/TinTucGiaoDuc/xemtin/@tintuctop.IDTINTUC" title=""><strong>@tintuctop.TIEUDE</strong></a></h2>
+                <p>@tintuctop.TOMTAT</p>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div style="width:100%">
+                <ul id="listbao">
+                    @foreach (var itemtintuccon in tintuc)
+                    {
+                        if (@sotin < 12)
+                        {
+                            <li id="listtinbao">
+                                <a href="/TinTucGiaoDuc/xemtin/@itemtintuccon.IDTINTUC">@itemtintuccon.TIEUDE</a>
+                            </li>
+                        }
+                        sotin++;
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    @*đề thi*@
+    @foreach (var item in menuCon)
+    {
+        if (@item.DETHIs.Count > 0)
+        {
+            <div class="content_bottom">
+                <div class="heading">
+                    <h3>ĐỀ THI MÔN @item.TENMON </h3>
+                </div>
+                <div class="see">
+                    <p>
+                        @Html.ActionLink("Xem Thêm đề thi", "DSDeThi", new { id = item.IDMON })
+                    </p>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="section group">
+                @foreach (var itemdethi in dethi.Where(x => x.IDMON == item.IDMON))
+                {
+                    if (i2 <= 4)
+                    {
+                        <div class="grid_1_of_4 images_1_of_4">
+                            <h2>@itemdethi.TENDETHI </h2>
+                            <div class="price-details">
+                                <div class="price-number">
+                                    <p>
+                                        <span class="rupees">Số Câu: @itemdethi.SOCAU.SOCAU1</span>
+                                    </p>
+                                </div>
+                                <div class="add-cart">
+                                    <h4>@Html.ActionLink("Vào Thi", "XemDeThi", new { id = itemdethi.IDDETHI }, null)</h4>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        i2 = (i2 + 1);
+                    }
+                    else
+                    {
+                        <div></div>
+                    }
+                }
+            </div>
+                i2 = 1;
+        }
+    }
+
+</div>

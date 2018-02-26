@@ -1,0 +1,29 @@
+﻿@using TrangWebThiTracNghiem.Common
+
+@{
+    Layout = null;
+    var session = (NguoiDungLogin)Session[CommonConstant.USER_SESSION];
+}
+
+<div class="headertop_desc">
+    <div class="account_desc">
+        <strong>
+        @if (session == null)
+        {
+            <ul>
+                <li><a href="/NguoiDungClient/Index">Đăng Nhập</a></li>
+                <li><a href="/NguoiDungClient/Creates">Đăng ký tài khoản</a></li>
+            </ul>
+        }
+        else
+        {
+            <ul>
+                <li><a href="/NguoiDungClient/Details/@session.idnguoidung">Xin Chào: <span class="glyphicon glyphicon-user" aria-hidden="true"></span> @session.tendangnhap</a></li>
+                <li><a href="/NguoiDungClient/LichSuThi/@session.idnguoidung">Lịch sử thi</a></li>
+                <li><a href="/NguoiDungClient/Logout">Logout</a></li>
+            </ul>
+        }
+        </strong>
+    </div>
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,18 @@
+﻿@model Model.EF.TAILIEU
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+}
+
+<h2>Chi tiết @Model.TENBAI</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        Ngày tạo bài: @Html.DisplayFor(model => model.NGAY)
+        <hr />
+        @Html.Raw(Model.NOIDUNG)
+    </dl>
+</div>

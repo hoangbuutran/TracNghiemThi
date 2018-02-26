@@ -1,0 +1,81 @@
+﻿@model Model.EF.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết người dùng</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LOAINGUOIDUNG.TENLOAINGUOIDUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOAINGUOIDUNG.TENLOAINGUOIDUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENNGUOIDUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENNGUOIDUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENDANGNHAP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENDANGNHAP)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.MATKHAU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATKHAU)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.EMAIL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DOTINCAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOTINCAY)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+</div>
+<p>
+    <button class="button">
+        @Html.ActionLink("Phân quyền", "Edit", new { id = Model.IDNGUOIDUNG })
+    </button>
+    |
+    <button class="button">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+
+
+</p>

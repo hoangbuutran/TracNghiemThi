@@ -1,0 +1,83 @@
+﻿@model Model.EF.NGUOIDUNG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+}
+
+<h2>Thông tin chi tiết người dùng</h2>
+
+<div>
+    <h4>Người dùng @Model.TENNGUOIDUNG</h4>
+    <hr />
+    <div class="col-md-4">
+        <p>
+            
+            <a href="#"><figure><img class="thumbs-img" src="/Assets/Client/Client1/images/anhdaidien.jpg" width="260" height="162"></figure></a>
+            <br/>
+            <button class="button">
+                @Html.ActionLink("Sửa thông tin", "Edit", new {id = Model.IDNGUOIDUNG})
+            </button>
+            <br/>
+            <button class="button">
+                
+                @Html.ActionLink("Đổi mật khẩu",  "DoiMatKhauClient", new { id = Model.IDNGUOIDUNG })
+            </button>
+        </p>
+    </div>
+    <div class="col-md-8">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.LOAINGUOIDUNG.TENLOAINGUOIDUNG)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LOAINGUOIDUNG.TENLOAINGUOIDUNG)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.TENNGUOIDUNG)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TENNGUOIDUNG)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.TENDANGNHAP)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TENDANGNHAP)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.MATKHAU)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MATKHAU)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.EMAIL)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EMAIL)
+            </dd>
+            <hr />
+            <dt>
+                @Html.DisplayNameFor(model => model.DOTINCAY)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DOTINCAY)
+            </dd>
+            <hr />
+
+        </dl>
+    </div>
+
+</div>
+

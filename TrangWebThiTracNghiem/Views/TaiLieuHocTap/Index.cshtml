@@ -1,0 +1,67 @@
+﻿@using Model.EF
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+    var monthi = (List<MONTHI>)ViewBag.monthi;
+    var capthi = (List<CAPTHI>)ViewBag.capthi;
+    var chuyennganh = (List<CT_CHUYENNGANH_MON>)ViewBag.CT_chuyennganh;
+    var chuyennganhchinh = (List<CHUYENNGANH_DH>)ViewBag.chuyennganh;
+}
+
+
+@foreach (var itemCapThi in capthi)
+{
+    if (itemCapThi.MONTHIs.Count(x => x.TAILIEUx.Count > 0) > 0)
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <strong style="background-color: chartreuse"> Tài liệu cấp thi @itemCapThi.TENCAPTHI</strong>
+                    </div>
+                    @if (@itemCapThi.IDCAPTHI != 12)
+                    {
+                        foreach (var itemMonThi in monthi.Where(x => x.IDCAPTHI == @itemCapThi.IDCAPTHI))
+                        {
+                            if (itemMonThi.TAILIEUx.Count > 0)
+                            {
+                                <br />
+                                <div class="panel-heading" id="tailieucon">
+                                    <a href="/TaiLieuHocTap/HienThiDsBaiThi/@itemMonThi.IDMON">Tài Liệu Môn @itemMonThi.TENMON</a>
+                                </div>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var itemchuyennganh in chuyennganhchinh)
+                        {
+                            if (itemchuyennganh.CT_CHUYENNGANH_MON.Count > 0)
+                            {
+                                <br/>
+                                <div class="panel-heading">
+                                    <strong> Tài Liệu Chuyên Ngành @itemchuyennganh.TENCN_DH</strong>
+                                </div>
+                                foreach (var itemMonThi in chuyennganh.Where(x => x.IDCN_DH == itemchuyennganh.IDCN_DH))
+                                {
+                                    if (itemMonThi.MONTHI.TAILIEUx.Count > 0)
+                                    {
+                                        <br />
+                                        <div class="panel-heading" id="tailieucon">
+                                            <a href="/TaiLieuHocTap/HienThiDsBaiThi/@itemMonThi.MONTHI.IDMON">Tài Liệu Môn @itemMonThi.MONTHI.TENMON</a>
+                                        </div>
+                                    }
+                                }
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+
+
+
+

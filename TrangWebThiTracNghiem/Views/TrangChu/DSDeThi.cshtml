@@ -1,0 +1,49 @@
+﻿@using Model.EF
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSecond.cshtml";
+
+    var dethi = (List<Model.EF.DETHI>)ViewBag.dethi;
+    var monthi = (MONTHI)ViewBag.monthi;
+
+}
+<div class="page-header">
+    <div class="row">
+        <div class="col-lg-9" id="dsdethi">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Danh sách đề thi môn: @monthi.TENMON
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <div class="panel-heading">
+                                    Thi Thử Trắc Nghiệm
+                                </div>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in dethi)
+                                {
+                                    <tr>
+                                        <td class="col-md-2">
+                                            <strong>Số câu:</strong> @item.SOCAU.SOCAU1
+                                        </td>
+                                        <td class="col-md-6">
+                                            <strong>Tên Đề thi: </strong> @item.TENDETHI
+                                        </td>
+                                        <td class="col-md-3">
+                                            <button class="button" id="butthi">
+                                                <a href="/TrangChu/XemDeThi/@item.IDDETHI">Vào Thi</a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

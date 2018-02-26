@@ -1,0 +1,143 @@
+﻿@model Model.EF.DETHI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var dscauhoi = (List<Model.EF.CT_DETHI_CAUHOI>)ViewBag.dsCauHoi;
+    var i = 0;
+}
+<br />
+<h2>Chi Tiết đề thi @Model.TENDETHI</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MONTHI.TENMON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTHI.TENMON)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.MUCDO.TENMUCDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MUCDO.TENMUCDO)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.NGUOIDUNG.TENNGUOIDUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUOIDUNG.TENNGUOIDUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.SOCAU.SOCAU1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOCAU.SOCAU1)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayName("Số câu đã có trong đề")
+        </dt>
+
+        <dd>
+            @Html.ViewBag.soCauDaCo
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.THOIGIAN.THOIGIAN1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.THOIGIAN.THOIGIAN1)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENDETHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENDETHI)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.NGAYTAODE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAYTAODE)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DOTINCAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOTINCAY)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+</div>
+
+<div class="form-group">
+
+    @foreach (var item in dscauhoi)
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Html.Raw(@item.CAUHOI.NOIDUNGCAUHOI)
+                    </div>
+                    <!-- .panel-heading -->
+
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            A. @item.CAUHOI.DAPAN_A
+                        </li>
+                        <li class="list-group-item">
+                            B. @item.CAUHOI.DAPAN_B
+                        </li>
+                        <li class="list-group-item">
+                            C. @item.CAUHOI.DAPAN_C
+                        </li>
+                        <li class="list-group-item">
+                            D. @item.CAUHOI.DAPAN_D
+                        </li>
+                        <li class="list-group-item">
+                            <a href="/Admin/DeThi/DetailsCauHoi/@item.IDCAUHOI">Chi tiết câu hỏi</a>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+    }
+</div>
+<hr />
+<p>
+    <button class="button">
+        @Html.ActionLink("Sửa đề thi", "Edit", new { id = Model.IDDETHI })
+    </button>
+    <button class="button">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+</p>

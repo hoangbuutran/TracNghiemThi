@@ -1,0 +1,98 @@
+﻿@model Model.EF.CAUHOI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Chi tiết câu hỏi</h2>
+
+<div>
+    <h4>Câu Hỏi Số: @Model.IDCAUHOI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+       
+        <dt>
+            @Html.DisplayNameFor(model => model.NOIDUNGCAUHOI)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NOIDUNGCAUHOI)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_A)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_A)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_B)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_C)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_C)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_D)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_DUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_DUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.MONTHI.TENMON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MONTHI.TENMON)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DOTINCAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOTINCAY)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+</div>
+
+<p>
+    <button class="button">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IDCAUHOI })
+    </button>
+    |
+    <button class="button">
+        @Html.ActionLink("Back to List", "Index")
+    </button>
+</p>

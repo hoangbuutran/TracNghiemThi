@@ -1,0 +1,93 @@
+﻿@model Model.EF.CAUHOI
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Câu Hỏi</h2>
+
+<h3>Bạn có chắc chắn muốn xóa, xóa câu hỏi sẽ xóa kèm theo dữ liệu trong bảng SCDL khác</h3>
+<div>
+    <h4>Câu Hỏi Số: @Model.IDCAUHOI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.NOIDUNGCAUHOI)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NOIDUNGCAUHOI)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_A)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_A)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_B)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_B)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_C)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_C)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_D)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_D)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DAPAN_DUNG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DAPAN_DUNG)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.DOTINCAY)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOTINCAY)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <button class="button">
+                @Html.ActionLink("Back to List", "Index")
+            </button>
+        </div>
+    }
+</div>

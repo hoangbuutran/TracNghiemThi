@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Model.EF.DETHI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Quản Lý đề thi</h2>
+
+<p>
+    <button class="button">
+        @Html.ActionLink("Tạo Mới đề thi", "Create")
+    </button>
+</p>
+<hr />
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>Danh sách đề thi</strong>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MONTHI.TENMON)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MUCDO.TENMUCDO)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.TENDETHI)
+                                </th>
+
+                                <th>Tùy Chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MONTHI.TENMON)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MUCDO.TENMUCDO)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TENDETHI)
+                                    </td>
+
+                                    <td>
+                                        <button class="button">
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.IDDETHI })
+                                        </button>
+                                        |
+                                        <button class="button">
+                                            @Html.ActionLink("Details", "Details", new { id = item.IDDETHI })
+                                        </button>
+                                        |
+                                        <button class="button">
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.IDDETHI })
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+
+</div>

@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<style type="text/css">
+    .clear {
+    }
+</style>
+<html @*xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"*@>
+<head>
+
+    <title>Trắc nghiệm Online</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="/Assets/Client/Client1/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Assets/Client/Client1/css/bootstrap.css" rel="stylesheet" />
+    <link href="/Assets/Client/Client1/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="/Assets/Client/Client1/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="/Assets/Client/Client1/js/jquery-3.2.1.min.js"></script>
+    <link href="/Assets/Admin/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <script src="/Assets/Client/Client1/js/bootstrap.min.js"></script>
+    <link href="~/Assets/Client/Client1/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/Client/Client1/css/global.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            @RenderPage("_MenuTaiKhoan.cshtml")
+            <div class="header_top">
+                @RenderPage("_MenuLogo.cshtml")
+                
+                <script type="text/javascript">
+                    function DropDown(el) {
+                        this.dd = el;
+                        this.initEvents();
+                    }
+
+                    DropDown.prototype = {
+                        initEvents: function() {
+                            var obj = this;
+
+                            obj.dd.on('click',
+                                function(event) {
+                                    $(this).toggleClass('active');
+                                    event.stopPropagation();
+                                });
+                        }
+                    }
+
+                    $(function() {
+
+                        var dd = new DropDown($('#dd'));
+
+                        $(document).click(function() {
+                            // all dropdowns
+                            $('.wrapper-dropdown-2').removeClass('active');
+                        });
+
+                    });
+
+                </script>
+                <div class="clear"></div>
+            </div>
+            @RenderPage("_MenuTop.cshtml")
+        </div>
+        <div class="main">
+            <div class="row">
+                <div class="col-md-8">
+                    @RenderBody()
+                </div>
+                @RenderPage("_MenuRight.cshtml")
+            </div>
+        </div>
+    </div>
+
+    @RenderPage("_Footer.cshtml")
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });
+    </script>
+    <a href="#" id="toTop"><span id="toTopHover"> </span></a>
+
+</body>
+</html>

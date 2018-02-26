@@ -1,0 +1,52 @@
+﻿@model Model.EF.MONTHI
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Xóa Môn Thi</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Môn Thi: @Model.TENMON</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CAPTHI.TENCAPTHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAPTHI.TENCAPTHI)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENMON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENMON)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <button class="button">
+                @Html.ActionLink("Back to List", "Index")
+            </button>
+        </div>
+    }
+</div>

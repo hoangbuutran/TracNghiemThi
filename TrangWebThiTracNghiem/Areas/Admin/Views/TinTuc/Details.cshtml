@@ -1,0 +1,71 @@
+﻿@model Model.EF.TINTUC
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<h2>Xem chi tiết tin tức</h2>
+
+<div>
+    <h4>Tin tức: @Model.TIEUDE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIEUDE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIEUDE)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TOMTAT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TOMTAT)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.ANHBIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANHBIA)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.NOIDUNG)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.NOIDUNG)
+        </dd>
+        <hr />
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.NGUON)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGUON)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TRANGTHAI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TRANGTHAI)
+        </dd>
+        <hr />
+    </dl>
+</div>
+
+<p>
+    <button class="Button">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IDTINTUC })
+    </button>
+</p>

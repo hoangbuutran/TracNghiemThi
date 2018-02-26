@@ -1,0 +1,44 @@
+﻿@model Model.EF.CHUYENNGANH_DH
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa Chuyên Ngành</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Chuyên Ngành: @Model.TENCN_DH</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CAPTHI.TENCAPTHI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CAPTHI.TENCAPTHI)
+        </dd>
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.TENCN_DH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TENCN_DH)
+        </dd>
+        <hr />
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <button class="button">
+                @Html.ActionLink("Back to List", "Index")
+            </button>
+        </div>
+    }
+</div>

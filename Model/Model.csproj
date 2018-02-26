@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E474951-F812-4B82-AAD9-14C528B43B80}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dao\BaiLamDao.cs" />
+    <Compile Include="Dao\CapThiDao.cs" />
+    <Compile Include="Dao\CauHoiDao.cs" />
+    <Compile Include="Dao\ChuyenNganhDao.cs" />
+    <Compile Include="Dao\CT_BaiLam_CauHoi.cs" />
+    <Compile Include="Dao\CT_CauHoi_DeThi.cs" />
+    <Compile Include="Dao\CT_ChuyenNganh_MonDao.cs" />
+    <Compile Include="Dao\DeThiDao.cs" />
+    <Compile Include="Dao\HomeDao.cs" />
+    <Compile Include="Dao\LienHeDao.cs" />
+    <Compile Include="Dao\LoaiNguoiDungDao.cs" />
+    <Compile Include="Dao\MonThiDao.cs" />
+    <Compile Include="Dao\MucDoDao.cs" />
+    <Compile Include="Dao\NguoiDungDao.cs" />
+    <Compile Include="Dao\ShowGiaoDienChinhDao.cs" />
+    <Compile Include="Dao\SoCauDao.cs" />
+    <Compile Include="Dao\TaiLieuDao.cs" />
+    <Compile Include="Dao\ThoiGianDao.cs" />
+    <Compile Include="Dao\ThongBaoDao.cs" />
+    <Compile Include="Dao\TinTucDao.cs" />
+    <Compile Include="EF\BAILAM.cs" />
+    <Compile Include="EF\CAPTHI.cs" />
+    <Compile Include="EF\CAUHOI.cs" />
+    <Compile Include="EF\CHUYENNGANH_DH.cs" />
+    <Compile Include="EF\CT_BAIlAM_CAUHOI.cs" />
+    <Compile Include="EF\CT_CHUYENNGANH_MON.cs" />
+    <Compile Include="EF\CT_DANHGIA_DETHI.cs" />
+    <Compile Include="EF\CT_DETHI_CAUHOI.cs" />
+    <Compile Include="EF\DANHGIA.cs" />
+    <Compile Include="EF\DETHI.cs" />
+    <Compile Include="EF\LIENHE.cs" />
+    <Compile Include="EF\LOAINGUOIDUNG.cs" />
+    <Compile Include="EF\MONTHI.cs" />
+    <Compile Include="EF\MUCDO.cs" />
+    <Compile Include="EF\NGUOIDUNG.cs" />
+    <Compile Include="EF\SOCAU.cs" />
+    <Compile Include="EF\sysdiagram.cs" />
+    <Compile Include="EF\TAILIEU.cs" />
+    <Compile Include="EF\TestDbContext.cs" />
+    <Compile Include="EF\THOIGIAN.cs" />
+    <Compile Include="EF\THONGBAO.cs" />
+    <Compile Include="EF\TINTUC.cs" />
+    <Compile Include="EF\YKIEN_DETHI.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

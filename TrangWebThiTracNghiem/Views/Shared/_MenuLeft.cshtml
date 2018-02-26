@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+    var menuChinh = (List<Model.EF.CAPTHI>)ViewBag.MenuChinh;
+    var menuCon = (List<Model.EF.MONTHI>)ViewBag.MenuCon;
+    var chuyennganh = (List<Model.EF.CHUYENNGANH_DH>)ViewBag.chuyennganh;
+}
+
+<div class="categories">
+    <ul>
+        <div>
+            <h3>DANH SÁCH KHỐI THI</h3>
+        </div>
+        @foreach (var item in menuChinh)
+        {
+            <li class="dropdown">
+                <a href="" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    @item.TENCAPTHI
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li>
+                        @if (item.IDCAPTHI != 12)
+                        {
+                            foreach (var chileItem in menuCon.Where(x => x.IDCAPTHI == item.IDCAPTHI))
+                            {
+                                <strong><a href="/TrangChu/DSDeThi/@chileItem.IDMON">@chileItem.TENMON</a></strong>
+                            }
+                        }
+                        else
+                        {
+                            foreach (var chileItem in chuyennganh.Where(x => x.IDCAPTHI == item.IDCAPTHI))
+                            {
+                                <strong><a href="/TrangChu/DSDeThiCNDH/@chileItem.IDCN_DH">@chileItem.TENCN_DH</a></strong>
+                            }
+                        }
+                    </li>
+                    <li role="separator" class="divider"></li>
+                </ul>
+            </li>
+        }
+    </ul>
+</div>
